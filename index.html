@@ -1,0 +1,108 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#05060f" />
+<title>HOLO • 3D Card Forge</title>
+<link rel="stylesheet" href="style.css" />
+
+<div id="app">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">◈</span>
+      <span class="brand-name">HOLO<em>FORGE</em></span>
+    </div>
+    <div class="rarity-badge" id="rarityBadge">SSR</div>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="card-wrap" id="cardWrap">
+      <div class="card" id="card">
+        <!-- FRONT -->
+        <div class="face front">
+          <div class="photo-layer" id="photoLayer">
+            <div class="empty-hint" id="emptyHint">
+              <div class="empty-icon">⬡</div>
+              <p>อัปโหลดรูปถ่ายของคุณ</p>
+              <span>แตะปุ่ม “เลือกรูป” ด้านล่าง</span>
+            </div>
+          </div>
+          <div class="foil holo"></div>
+          <div class="foil sparkle"></div>
+          <div class="glare"></div>
+          <div class="frame">
+            <div class="corner tl"></div><div class="corner tr"></div>
+            <div class="corner bl"></div><div class="corner br"></div>
+            <div class="nameplate">
+              <span class="card-title" id="cardTitleFront">UNTITLED</span>
+              <span class="card-sub" id="cardSubFront">— tap to name —</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="face back">
+          <div class="back-pattern"></div>
+          <div class="foil holo"></div>
+          <div class="glare"></div>
+          <div class="back-content">
+            <div class="back-logo">◈</div>
+            <h2 id="cardTitleBack">UNTITLED</h2>
+            <div class="stat-row"><span>RARITY</span><b id="statRarity">SSR</b></div>
+            <div class="stat-row"><span>POWER</span><b id="statPower">—</b></div>
+            <div class="stat-row"><span>ELEMENT</span><b id="statElement">—</b></div>
+            <p class="lore" id="cardLore">ยังไม่มีคำอธิบาย แตะ “ข้อมูล” เพื่อแก้ไข</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="dock">
+    <label class="btn primary">
+      <input type="file" id="fileInput" accept="image/*" hidden />
+      <span class="ico">🖼️</span><span class="lbl">เลือกรูป</span>
+    </label>
+    <button class="btn" id="flipBtn"><span class="ico">🔄</span><span class="lbl">พลิก</span></button>
+    <button class="btn" id="infoBtn"><span class="ico">ℹ️</span><span class="lbl">ข้อมูล</span></button>
+    <button class="btn" id="gyroBtn"><span class="ico">🎯</span><span class="lbl">ไจโร</span></button>
+  </nav>
+
+  <!-- INFO / EDIT SHEET -->
+  <div class="sheet-scrim" id="sheetScrim"></div>
+  <section class="sheet" id="sheet">
+    <div class="sheet-handle"></div>
+    <h3>ข้อมูลการ์ด</h3>
+    <label class="field"><span>ชื่อการ์ด</span>
+      <input type="text" id="inTitle" maxlength="22" placeholder="เช่น STELLAR KNIGHT" />
+    </label>
+    <label class="field"><span>คำบรรยายย่อย</span>
+      <input type="text" id="inSub" maxlength="30" placeholder="เช่น Guardian of the Void" />
+    </label>
+    <div class="field-grid">
+      <label class="field"><span>ระดับความหายาก</span>
+        <select id="inRarity">
+          <option>N</option><option>R</option><option>SR</option>
+          <option selected>SSR</option><option>UR</option><option>LR</option>
+        </select>
+      </label>
+      <label class="field"><span>ธาตุ</span>
+        <select id="inElement">
+          <option>🔥 Fire</option><option>💧 Water</option><option>🌿 Nature</option>
+          <option>⚡ Thunder</option><option>🌌 Void</option><option>✨ Light</option>
+        </select>
+      </label>
+    </div>
+    <label class="field"><span>พลัง (POWER)</span>
+      <input type="range" id="inPower" min="0" max="9999" value="8200" />
+      <output id="powerOut">8200</output>
+    </label>
+    <label class="field"><span>เรื่องราว (LORE)</span>
+      <textarea id="inLore" maxlength="180" rows="3" placeholder="เขียนเรื่องราวของการ์ด..."></textarea>
+    </label>
+    <button class="btn primary wide" id="saveBtn">บันทึก</button>
+  </section>
+</div>
+
+<script src="app.js"></script>
